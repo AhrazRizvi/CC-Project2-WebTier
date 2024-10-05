@@ -1,6 +1,23 @@
-# CSE546_workload_generator
+# CSE546 workload_generator
 
 This repository contains code examples for you to use our workload generator.
+
+Usage:
+```
+usage: workload_generator.py [-h] [--num_request NUM_REQUEST] [--url URL] [--image_folder IMAGE_FOLDER] [--prediction_file PREDICTION_FILE]
+Upload images
+options:
+  -h, --help            show this help message and exit
+  --num_request NUM_REQUEST
+                        one image per request
+  --url URL             URL to the backend server, e.g. http://3.86.108.221:8000/
+  --image_folder IMAGE_FOLDER
+                        the path of the folder where images are saved
+  --prediction_file PREDICTION_FILE
+                        the path of the classification results file
+```
+
+Examples:
 
 The following command sends three requests to a php backend.
 ```
@@ -19,6 +36,7 @@ python3 workload_generator.py \
  --image_folder "your_local_image_folder" \
  --prediction_file "ground_truth_prediction_file"
 ```
+**Note**: The workload generator accepts the absolute path in the command line arguments. 
 
 Sample output:
 ```
