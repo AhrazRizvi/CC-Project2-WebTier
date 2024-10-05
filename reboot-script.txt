@@ -1,0 +1,29 @@
+sudo nano /etc/systemd/system/uvicorn-server.service
+
+Paste the code and save the file
+
+********************************************
+[Unit]
+Description=MyServer
+After=multi-user.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStart=/home/ubuntu/project2env/bin/python -m uvicorn app:app --host 0.0.0.0 --port 8000 --workers=5
+WorkingDirectory=/home/ubuntu/CC-Project2-WebTier
+User=ubuntu
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=multi-user.target
+********************************************
+sudo chmod 644 /etc/systemd/system/uvicorn-server.service
+sudo systemctl start uvicorn-server
+sudo systemctl daemon-reload
+sudo systemctl restart uvicorn-server
+sudo systemctl status uvicorn-server
+journalctl -u uvicorn-server -f --no-pager 
+
+sudo systemctl enable uvicorn-server 
